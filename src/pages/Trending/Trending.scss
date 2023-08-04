@@ -1,0 +1,13 @@
+.container-sec {
+    z-index: 1;
+    padding: 2rem 10rem;
+    max-width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-rows: 350px;
+    gap: 30px;
+    overflow-y: scroll;
+
+}
