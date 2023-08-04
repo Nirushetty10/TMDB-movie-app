@@ -5,7 +5,7 @@ import {BrowserRouter , Routes , Route} from "react-router-dom";
 import Movies from './pages/Movies/Movies';
 import Search from './pages/Search/Search';
 import Trending from './pages/Trending/Trending';
-import TVSeries from './pages/TV series/TVSeries';
+import TVSeries from './pages/TvSeries/TVSeries';
 import BottomNav from './component/BottomNav/BottomNav';
 
 export default class App extends Component {

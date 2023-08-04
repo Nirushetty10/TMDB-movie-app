@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import SingleMovie from '../../component/SingleMovie/SingleMovie';
+import Pagination from '@material-ui/lab/Pagination';
 import "./Trending.scss"
 import axios from 'axios';
 
@@ -40,9 +41,21 @@ export default class Trending extends Component {
     const {loading , error ,data} = this.state;
     if(loading) <h2>Loading...</h2>
     if(error) <h2>Something went wrong!.</h2>
-    return (  <div className='container-sec'>
+    return (<div className='trendingPage'>  <div className='container-sec'>
       {data.map(item => <SingleMovie key={item.id} title={item.original_title} rating={item.vote_average.toFixed(1)} date={item.release_date} poster={item.poster_path} category={item.media_type}/>)}
       </div>
+      <div className="paginationSec">
+      <Pagination
+            className="pagination"
+            count={10}
+            page={this.state.currentPage}
+            onChange={this.handlePage}
+            variant="outlined"
+            shape="rounded"
+          />
+          </div>
+      </div>
     )
+   
   }
 }
