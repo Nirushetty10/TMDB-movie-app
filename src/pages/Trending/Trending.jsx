@@ -12,16 +12,17 @@ export default class Trending extends Component {
     this.state = {
        data : [],
        loading : false,
-       error : null
+       error : null,
+       currentPage : 1
     }
   }
   
-  fetchMovieData = async() => {
+  fetchMovieData = async(page = 1) => {
     this.setState({
       loading : true
     })
     try {
-      let res = await axios.get("https://api.themoviedb.org/3/trending/movie/week?api_key=19aacea181df3f3c63b339bdf2d770fd");
+      let res = await axios.get(`https://api.themoviedb.org/3/trending/movie/week?page=${page}&api_key=19aacea181df3f3c63b339bdf2d770fd`);
       this.setState({
         data : res.data.results, 
         loading : false
@@ -33,6 +34,12 @@ export default class Trending extends Component {
         loading : false
       })
     }
+  }
+  handlePage = (e,page) => {
+    this.fetchMovieData(page)
+    this.setState({
+      currentPage : page
+    })
   }
     componentDidMount() {
        this.fetchMovieData();
