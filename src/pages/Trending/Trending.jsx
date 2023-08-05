@@ -22,7 +22,8 @@ export default class Trending extends Component {
       loading : true
     })
     try {
-      let res = await axios.get(`https://api.themoviedb.org/3/trending/movie/week?page=${page}&api_key=19aacea181df3f3c63b339bdf2d770fd`);
+      let res = await axios.get(`https://api.themoviedb.org/3/trending/all/day?${page}&api_key=19aacea181df3f3c63b339bdf2d770fd`);
+      console.log(res.data);
       this.setState({
         data : res.data.results, 
         loading : false
@@ -46,10 +47,13 @@ export default class Trending extends Component {
     }
   render() {
     const {loading , error ,data} = this.state;
-    if(loading) <h2>Loading...</h2>
-    if(error) <h2>Something went wrong!.</h2>
+    if(loading) return <h2>Loading...</h2>
+    if(error) return <h2>Something went wrong!.</h2>
     return (<div className='trendingPage'>  <div className='container-sec'>
-      {data.map(item => <SingleMovie key={item.id} title={item.original_title} rating={item.vote_average.toFixed(1)} date={item.release_date} poster={item.poster_path} category={item.media_type}/>)}
+      {data.map(item => {
+        if(!item.original_title || !item.release_date ) return;
+      return <SingleMovie key={item.id} title={item.original_title} rating={item.vote_average.toFixed(1)} date={item.release_date} poster={item.poster_path} category={item.media_type}/>
+  })}
       </div>
       <div className="paginationSec">
       <Pagination
