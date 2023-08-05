@@ -1,0 +1,26 @@
+.trendingPage {
+    height: 90%;
+    .container-sec {
+        z-index: 1;
+        padding: 2rem 10rem;
+        height: 90%;
+        max-width: 100%;
+        box-sizing: border-box;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-auto-rows: 350px;
+        gap: 30px;
+        overflow-y: scroll;
+    }
+    .pagination {
+        width: 100%;
+        height: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: 1rem;
+    }
+}
+
